@@ -1,0 +1,11 @@
+<h3>Person: {{personData.name}}</h3>
+
+<h4>Direct Relationships</h4>
+
+<p ng-if="isEmpty">Please select a person to see relationships</p>
+
+<uib-accordion close-others="oneAtATime">
+    <uib-accordion-group data-ng-repeat="person in persons" heading="{{person.source.name}}">
+        {{person.source.name}} is the {{person.relation.text}} of {{person.target.name}}
+    </uib-accordion-group>
+</uib-accordion>

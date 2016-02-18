@@ -1,0 +1,10 @@
+{
+  "nodes":[
+    {"name":"Jane Doe","group":1,"href":"#list", "thumbUrl":"ajax/personCard.json"},
+    {"name":"Alice Johnson","group":1,"href":"#list", "thumbUrl":"ajax/personCard2.json"}
+  ],
+  "links":[
+    {"source":0,"target":1,"value":1,"href":"ajax/caseCard1.json"},
+    {"source":1,"target":0,"value":1,"href":"ajax/caseCard1.json"}
+  ]
+}
