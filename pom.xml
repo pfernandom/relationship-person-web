@@ -45,7 +45,7 @@
 			<version>${servletapi.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- Spring MVC framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -70,7 +70,7 @@
 			<artifactId>spring-web</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<!-- Jackson JSON Mapper -->
 
 		<dependency>
@@ -170,7 +170,7 @@
 			<version>${cxf.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 
 
 		<dependency>
@@ -207,91 +207,22 @@
 					</webApp>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>pl.allegro</groupId>
+				<artifactId>grunt-maven-plugin</artifactId>
+				<version>1.4.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>npm</goal>
+							<goal>grunt</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>pl.allegro</groupId>
-										<artifactId>
-											grunt-maven-plugin
-										</artifactId>
-										<versionRange>
-											[1.4.1,)
-										</versionRange>
-										<goals>
-											<goal>
-												create-resources
-											</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+
 	</build>
 
-	<profiles>
-		<profile>
 
-			<id>grunt</id>
-			<build>
-				<finalName>person-relationship</finalName>
-				<plugins>
-					<plugin>
-						<groupId>pl.allegro</groupId>
-						<artifactId>grunt-maven-plugin</artifactId>
-						<version>1.4.1</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>npm</goal>
-									<goal>grunt</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-				<pluginManagement>
-					<plugins>
-						<!--This plugin's configuration is used to store Eclipse m2e settings 
-							only. It has no influence on the Maven build itself. -->
-						<plugin>
-							<groupId>pl.allegro</groupId>
-							<artifactId>grunt-maven-plugin</artifactId>
-							<version>1.5.0</version>
-							<configuration>
-
-							</configuration>
-							<executions>
-								<execution>
-									<goals>
-										<goal>create-resources</goal>
-										<goal>npm</goal>
-										<!-- or npm-offline if npm failure is not an option -->
-										<goal>bower</goal>
-										<goal>grunt</goal>
-									</goals>
-								</execution>
-							</executions>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
-		</profile>
-	</profiles>
 </project>
