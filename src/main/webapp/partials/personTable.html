@@ -1,4 +1,4 @@
-<h3>Person: {{personData.name}}</h3>
+<h3 ng-if="!isEmpty">Person: {{personData.name}}</h3>
 
 <h4>Direct Relationships</h4>
 
@@ -7,5 +7,8 @@
 <uib-accordion close-others="oneAtATime">
     <uib-accordion-group data-ng-repeat="person in persons" heading="{{person.source.name}}">
         {{person.source.name}} is the {{person.relation.text}} of {{person.target.name}}
+        <hr>
+        Click <a ui-sref="state1.list({ personId: person.source.id })">here</a> to see the 
+        relationships for this person.
     </uib-accordion-group>
 </uib-accordion>

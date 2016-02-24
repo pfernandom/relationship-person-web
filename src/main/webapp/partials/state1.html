@@ -10,12 +10,14 @@ Show All: <input type="checkbox" aria-label="..." ng-model="showAll">
   </span>
 </div><!-- /input-group -->
 
-<ul ng-show="query['name']!=='' || showAll">
-    <li ng-repeat="person in persons | filter:query">
-        <a ui-sref="state1.list({ personId: person.id })">{{person.name}}</a>
-    </li>
-</ul>
-
+<div class="search-result">
+	<ul ng-show="query['name']!=='' || showAll">
+	    <li ng-repeat="person in persons | filter:query">
+	        <a ui-sref="state1.list({ personId: person.id })">{{person.name}}</a>
+	    </li>
+	</ul>
+</div>
+<hr>
 <!--
 <a ui-sref="state1.list({ personId: 'miserables' })" ui-sref-opts="{reload: true}">Show List</a>
 <a ui-sref="state1.list({ personId: 'victims' })" ui-sref-opts="{reload: true}">Show Another List</a>

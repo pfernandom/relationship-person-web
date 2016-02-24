@@ -9,11 +9,13 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd ">
 
-	
+
 	<import resource="classpath:/app-context-config.xml" />
 
-	<context:component-scan base-package="com.consultorio.webapp" />
-
+	<context:component-scan base-package="com.accenture.relationship" />
+	<mvc:interceptors>
+		<bean class="com.accenture.relationship.RequestProcessingTimeInterceptor" />
+	</mvc:interceptors>
 	<mvc:default-servlet-handler />
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="false">

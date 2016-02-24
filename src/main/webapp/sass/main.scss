@@ -94,6 +94,31 @@ g{
 	}
 }
 
+.search-result{
+	position:relative;
+	ul{
+		position:absolute; 
+		background-color: white;
+    	width: 100%;
+    	z-index: 100;
+    	border-style: solid;
+	    border-width: 1px;
+	    border-color: grey;
+	    padding: 5px;
+	    li{
+	    	a{
+	    		display:block;
+	    		width:100%;
+	    		min-height:40px;
+	    		padding:5px;
+	    	}
+	    	a:hover{
+		    	background-color:#F5F5F5;
+		    }
+	    }
+	}
+}
+
 .person-label{
 	.badge{
 		margin-left:-5px;

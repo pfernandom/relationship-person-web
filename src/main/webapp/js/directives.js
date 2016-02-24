@@ -16,11 +16,11 @@ app.directive('personInfoCard',['$http','PersonService',function($http, PersonSe
 					return "label label-danger"
 				}
 
-			}
+			};
 
 			PersonService.getPerson(scope.personId,function(data, status, headers, config) {
 				scope.name = data.name;
-				scope.imageUrl = data.imageUrl;
+				scope.imageUrl = data.thumbUrl;
 				scope.labels = data.labels;
 			},function(data, status, headers, config) {
 				alert("AJAX failed!");
@@ -37,8 +37,6 @@ app.directive('personTable',['$http','PersonService',function($http, PersonServi
 		},
 		templateUrl:'partials/personTable.html',
 		link:function(scope, element, attrs) {
-			console.log(scope.personId);
-
 			if(scope.personId  && 0 !== scope.personId.length){
 				/*
 				var getIncomingRelations = function(nodeNum, links){
@@ -63,13 +61,17 @@ app.directive('personTable',['$http','PersonService',function($http, PersonServi
 					if(data){
 						for(var link in data.links){
 							link = data.links[link];
-							console.log(link);
-							var sourceNode = $.grep(data.nodes, function(e){ return e.nodeNum == link.source; });
-							var targetNode = $.grep(data.nodes, function(e){ return e.nodeNum == link.target; });
-								if(sourceNode[0].personId === scope.personId || targetNode[0].personId === scope.personId ){
+							//var sourceNode = $.grep(data.nodes, function(e){ return e.nodeNum == link.source; });
+							//var targetNode = $.grep(data.nodes, function(e){ return e.nodeNum == link.target; });
+							var sourceNode = data.nodes[link.source];
+							var targetNode = data.nodes[link.target];
+								
+	
+							if(parseInt(sourceNode.id) === parseInt(scope.personId) || parseInt(targetNode.id) === parseInt(scope.personId) ){
+								
 								scope.persons.push({
-									source:sourceNode[0],
-									target:targetNode[0],
+									source:sourceNode,
+									target:targetNode,
 									relation:PersonService.getTypeOfRelationship(link.value)
 								});
 							}
@@ -119,7 +121,7 @@ app.directive('caseInfoCard',['$http',function($http){
 					return "label label-danger"
 				}
 
-			}
+			};
 
 			var responsePromise = $http.get(scope.href);
 			responsePromise.success(function(data, status, headers, config) {
@@ -158,7 +160,6 @@ app.directive('graphChart',['$compile','GraphService','PersonService',function($
 		link:function(scope, element, attrs) {
 
 			var colMd = 700;
-			console.log($(element[0]).width());
 			var width =  parseInt($(element[0]).width(), 10);
 			var	height;
 
@@ -175,7 +176,6 @@ app.directive('graphChart',['$compile','GraphService','PersonService',function($
 
 			var updateGraph = function(error, json) {
 				if (error) throw error;
-
 				force
 					.nodes(json.nodes)
 					.links(json.links)
@@ -215,7 +215,7 @@ app.directive('graphChart',['$compile','GraphService','PersonService',function($
 			PersonService.getRelationshipsForPerson(scope.personId,function(data){
 				updateGraph(null,data);
 			},function(){
-				alert('Error retrieving JSON for relationships');
+				alert('Error retrieving JSON for relationships 1');
 			});
 
 			scope.refresh = function(){
@@ -226,7 +226,7 @@ app.directive('graphChart',['$compile','GraphService','PersonService',function($
 				PersonService.getRelationshipsForPerson(scope.personId,function(data){
 					updateGraph(null,data);
 				},function(){
-					alert('Error retrieving JSON for relationships');
+					alert('Error retrieving JSON for relationships 2');
 				});
 				force.start();
 			}

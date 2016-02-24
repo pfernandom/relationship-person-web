@@ -26,24 +26,24 @@ app.service('PersonService',['appProperties','$http',function(appProperties,$htt
 		},
 		getPerson:function(id, success, failure){
 			var responsePromise = $http({
-				url:appProperties.urls.getPerson,
-				method:"GET",
+				url:appProperties.urls.getPerson+id,
+				method:"GET"/*,
 				params:{
 					id:id
 				}
-
+			*/
 			});
 			responsePromise.success(success);
 			responsePromise.error(failure);
 		},
 		getRelationshipsForPerson:function(id, success, failure){
 			var responsePromise = $http({
-				url:appProperties.urls.getRelationshipsForPerson,
-				method:"GET",
+				url:appProperties.urls.getRelationshipsForPerson+id,
+				method:"GET"/*,
 				params:{
 					id:id
 				}
-
+				*/
 			});
 			responsePromise.success(success);
 			responsePromise.error(failure);
@@ -103,7 +103,7 @@ app.service('GraphService',['$rootScope','$compile',function($rootScope,$compile
 				var resultElement = tooltip.style("visibility", "visible");
 
 				scope.$apply(function() {
-					var card = '<person-info-card href="'+d.thumbUrl+'"></person-info-card>';
+					var card = '<person-info-card person-id="'+d.id+'"></person-info-card>';
 					resultElement.html(card);
 					$compile(resultElement[0])(scope)
 				});

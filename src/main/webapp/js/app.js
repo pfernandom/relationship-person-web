@@ -2,9 +2,9 @@ var app = angular.module('myGraphApp',['ui.router','ui.bootstrap']);
 
 app.constant('appProperties',{
 	urls:{
-		listOfPersons:'ajax/listOfPersons.json',
-		getPerson:'ajax/personCard.json',
-		getRelationshipsForPerson:'ajax/miserables.json',
+		listOfPersons:'rest/persons',
+		getPerson:'rest/persons/',
+		getRelationshipsForPerson:'rest/persons/relationship/',
 		getRelationshipTypeMap:'ajax/relationsMap.json'
 	}
 })
@@ -12,12 +12,12 @@ app.constant('appProperties',{
 app.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
 	//
 	// For any unmatched url, redirect to /state1
-	$urlRouterProvider.otherwise("/state1");
+	$urlRouterProvider.otherwise("/home");
 	//
 	// Now set up the states
 	$stateProvider
 		.state('state1', {
-			url: "/state1",
+			url: "/home",
 			//resolve: { title: 'My Contacts' },
 			params:{personId:""},
 			onEnter: ['$stateParams',function($stateParams){
@@ -43,7 +43,7 @@ app.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $url
 						$scope.query = {name:$scope.search};
 						PersonService.getListOfPersons(function(data, status, headers, config) {
 							//$scope.data = data;
-							$scope.persons = data.persons;
+							$scope.persons = data;
 						},function(data, status, headers, config) {
 							alert("AJAX failed!");
 						});
@@ -62,7 +62,7 @@ app.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $url
 		})
 
 		.state('state1.list', {
-			url: '/new/:personId',
+			url: '/relationship/:personId',
 			onEnter: ['$stateParams',function($stateParams){
 				console.log("On enter sub state "+$stateParams.personId);
 			}],
@@ -72,7 +72,7 @@ app.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $url
 			}],
 			views: {
 				"viewSub": {
-					template: '<graph-chart personId="{{personId}}"></graph-chart>',
+					template: '<graph-chart person-id="{{personId}}"></graph-chart>',
 					controller: ['$scope', '$stateParams', function($scope, $stateParams) {
 						$scope.personId = $stateParams.personId;
 					}]
