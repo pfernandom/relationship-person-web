@@ -90,9 +90,14 @@ app.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $url
 		.state('personDetail', {
 			url: '/personDetail/:personId',
 			views: {
-				"viewLeft": { template: "X" },
+				"viewLeft": { 
+					template: '<h2>See more</h2><br>Click <a ui-sref="relationshipState({ personId: personId })">here</a> to check the relationships for this person', 
+						controller: ['$scope', '$stateParams', function($scope, $stateParams) {
+							$scope.personId = $stateParams.personId;
+						}],	
+					},
 				"viewMain": {
-					template: 'Yeaah person {{personId}}',
+					template: '<person-info-card person-id="{{personId}}"></person-info-card>',
 					controller: ['$scope', '$stateParams', function($scope, $stateParams) {
 						$scope.personId = $stateParams.personId;
 					}],

@@ -4,11 +4,11 @@
 
 <p ng-if="isEmpty">Please select a person to see relationships</p>
 
-<uib-accordion close-others="oneAtATime">
+<uib-accordion close-others="true">
     <uib-accordion-group data-ng-repeat="person in persons" heading="{{person.source.name}}">
         {{person.source.name}} is the {{person.relation.text}} of {{person.target.name}}
         <hr>
-        Click <a ui-sref="state1.list({ personId: person.source.id })">here</a> to see the 
+        Click <a ui-sref="relationshipState({ personId: person.source.id })">here</a> to see the 
         relationships for this person.
     </uib-accordion-group>
 </uib-accordion>
