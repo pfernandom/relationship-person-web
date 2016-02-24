@@ -117,7 +117,7 @@ app.service('GraphService',['$rootScope','$compile',function($rootScope,$compile
 				var resultElement = tooltip.style("visibility", "visible");
 
 				scope.$apply(function() {
-					var card = '<person-info-card href="'+d.thumbUrl+'"></person-info-card>';
+					var card = '<person-info-card person-id="'+d.id+'"></person-info-card>';
 					resultElement.html(card);
 					$compile(resultElement[0])(scope)
 				});
