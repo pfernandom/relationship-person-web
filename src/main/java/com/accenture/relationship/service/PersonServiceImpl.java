@@ -46,14 +46,14 @@ public class PersonServiceImpl implements PersonService {
 		switch(id.intValue()){
 		case 1:
 			map = new RelationshipsMap();
-			map.addNode(this.createPerson(1L, "Donald Cruz", 1L, "ajax/miserables.json", "img/face1.jpg"));
-			map.addNode(this.createPerson(2L, "Maria Cruz", 2L, "ajax/miserables.json", "img/face1.jpg"));
-			map.addNode(this.createPerson(3L, "Carlos Cruz", 3L, "ajax/miserables.json", "img/face1.jpg"));
-			map.addNode(this.createPerson(4L, "Shieko Cruz", 4L, "ajax/miserables.json", "img/face1.jpg"));
-			map.addNode(this.createPerson(5L, "Minoda Cruz", 5L, "ajax/miserables.json", "img/face1.jpg"));
-			map.addNode(this.createPerson(6L, "Hillary Jay", 6L, "ajax/miserables.json", "img/face1.jpg"));
-			map.addNode(this.createPerson(7L, "Bernie Marsh", 7L, "ajax/miserables.json", "img/face1.jpg"));
-			map.addNode(this.createPerson(8L, "Marco Lopez", 8L, "ajax/miserables.json", "img/face1.jpg"));
+			map.addNode(this.createPerson(1L, "Donald Cruz", 1L, "#/personDetail", "img/face1.jpg"));
+			map.addNode(this.createPerson(2L, "Maria Cruz", 2L, "#/personDetail", "img/face1.jpg"));
+			map.addNode(this.createPerson(3L, "Carlos Cruz", 3L, "#/personDetail", "img/face1.jpg"));
+			map.addNode(this.createPerson(4L, "Shieko Cruz", 4L, "#/personDetail", "img/face1.jpg"));
+			map.addNode(this.createPerson(5L, "Minoda Cruz", 5L, "#/personDetail", "img/face1.jpg"));
+			map.addNode(this.createPerson(6L, "Hillary Jay", 6L, "#/personDetail", "img/face1.jpg"));
+			map.addNode(this.createPerson(7L, "Bernie Marsh", 7L, "#/personDetail", "img/face1.jpg"));
+			map.addNode(this.createPerson(8L, "Marco Lopez", 8L, "#/personDetail", "img/face1.jpg"));
 		
 			map.addLink(this.createLink(1L, 0L, 1L, "ajax/caseCard1.json"));
 			map.addLink(this.createLink(2L, 0L, 1L, "ajax/caseCard1.json"));

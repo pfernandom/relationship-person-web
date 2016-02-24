@@ -61,7 +61,7 @@ app.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $url
 
 		})
 
-		.state('state1.list', {
+		.state('relationshipState', {
 			url: '/relationship/:personId',
 			onEnter: ['$stateParams',function($stateParams){
 				console.log("On enter sub state "+$stateParams.personId);
@@ -71,7 +71,15 @@ app.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $url
 				$stateParams.personId = "";
 			}],
 			views: {
-				"viewSub": {
+				"viewLeft": {
+					template: '<person-table person-id="{{personId}}"></person-table>',
+					controller: ['$scope', '$stateParams', function($scope, $stateParams) {
+						console.log($stateParams);
+
+						$scope.personId = $stateParams.personId;
+						console.log('Ctrl:'+$stateParams.personId);
+					}]},
+				"viewMain": {
 					template: '<graph-chart person-id="{{personId}}"></graph-chart>',
 					controller: ['$scope', '$stateParams', function($scope, $stateParams) {
 						$scope.personId = $stateParams.personId;
@@ -79,32 +87,19 @@ app.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $url
 				}
 			}
 		})
-
-		.state('state2', {
-			url: '/new/:personId',
+		.state('personDetail', {
+			url: '/personDetail/:personId',
 			views: {
 				"viewLeft": { template: "X" },
 				"viewMain": {
-					template: '<graph-chart personId="{{personId}}"></graph-chart>',
+					template: 'Yeaah person {{personId}}',
 					controller: ['$scope', '$stateParams', function($scope, $stateParams) {
 						$scope.personId = $stateParams.personId;
 					}],
 				}
 			}
 
-		})
-		.state('state2.list', {
-			url: "/list",
-			views: {
-				"viewLeft": { template: "X" },
-				"viewMain": {
-					templateUrl: "partials/state2.list.html",
-					controller: ['$scope',function($scope) {
-						$scope.things = ["A", "Set", "Of", "Things"];
-					}] }
-			}
-
-		})
+		});
 }]);
 
 

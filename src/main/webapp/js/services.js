@@ -153,7 +153,7 @@ app.service('GraphService',['$rootScope','$compile',function($rootScope,$compile
 				.append("a")
 				//.attr("target", "_blank")
 				.attr("xlink:href", function (d) {
-					return d.href;
+					return '#/personDetail/'+d.id;
 				})
 				.text(function(d) { return d.name })
 			;

@@ -7362,6 +7362,12 @@ svg {
   width: 40px;
 }
 
+.home-image {
+  width: 100%;
+  padding: 5px;
+  background-color: #DFDFDF;
+}
+
 .body {
   min-height: 90%;
   border-style: solid;
