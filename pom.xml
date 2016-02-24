@@ -207,6 +207,7 @@
 					</webApp>
 				</configuration>
 			</plugin>
+			<!-- 
 			<plugin>
 				<groupId>pl.allegro</groupId>
 				<artifactId>grunt-maven-plugin</artifactId>
@@ -219,7 +220,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 		</plugins>
 
 	</build>
