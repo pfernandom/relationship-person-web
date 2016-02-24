@@ -105,6 +105,28 @@
 			<artifactId>jackson-jaxrs-xml-provider</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
+		
+		 <dependency>
+                    <groupId>org.codehaus.jackson</groupId>
+                    <artifactId>jackson-mapper-asl</artifactId>
+                    <version>1.9.13</version>
+             </dependency>
+             <dependency>
+                    <groupId>org.codehaus.jackson</groupId>
+                    <artifactId>jackson-mapper-asl</artifactId>
+                    <version>1.9.13</version>
+             </dependency>
+             <dependency>
+                 <groupId>com.fasterxml.jackson.core</groupId>
+                 <artifactId>jackson-databind</artifactId>
+                 <version>2.6.0</version>
+             </dependency>
+             <dependency>
+                    <groupId>org.codehaus.jackson</groupId>
+                    <artifactId>jackson-jaxrs</artifactId>
+                    <version>1.9.13</version>
+             </dependency>
+		
 
 
 		<dependency>
@@ -177,6 +199,14 @@
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-webapp</artifactId>
 			<version>${jetty.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.accenture.alt</groupId>
+			<artifactId>alt-common-ws</artifactId>
+			<version>1.0.0.10000-SNAPSHOT</version>
+			<scope>system</scope>
+		<systemPath>${project.basedir}/src/main/resources/alt-common-ws.jar</systemPath>
 		</dependency>
 	</dependencies>
 	<build>
